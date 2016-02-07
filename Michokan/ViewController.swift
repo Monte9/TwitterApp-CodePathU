@@ -30,7 +30,7 @@ class ViewController: UIViewController {
       //  let serializeRequest : AFJSONRequestSerializer = AFJSONRequestSerializer(0)
        // TwitterClient.sharedInstance.requestSerializer = AFJSONRequestSerializer()
         
-        TwitterClient.sharedInstance.fetchRequestTokenWithPath("outh/request_token", method: "GET", callbackURL: NSURL(string: "michokan://outh"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
+        TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "michokan://outh"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
             print("Got request token")
             }) { (error: NSError!) -> Void in
                 print("ERROR:  \(error)")
