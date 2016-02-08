@@ -27,12 +27,13 @@ class ViewController: UIViewController {
         //remove access token if it exist previously
         TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
         
-      //  let serializeRequest : AFJSONRequestSerializer = AFJSONRequestSerializer(0)
-       // TwitterClient.sharedInstance.requestSerializer = AFJSONRequestSerializer()
-        
-        TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "michokan://outh"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
+        TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "michokan://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
             print("Got request token")
-            }) { (error: NSError!) -> Void in
+            var authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
+            UIApplication.sharedApplication().openURL(authURL!)
+            
+            })
+            { (error: NSError!) -> Void in
                 print("ERROR:  \(error)")
         }
         
