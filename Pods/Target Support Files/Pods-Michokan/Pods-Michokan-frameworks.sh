@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Michokan/AFNetworking.framework"
   install_framework "Pods-Michokan/BDBOAuth1Manager.framework"
+  install_framework "Pods-Michokan/UIColor_Hex_Swift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Michokan/AFNetworking.framework"
   install_framework "Pods-Michokan/BDBOAuth1Manager.framework"
+  install_framework "Pods-Michokan/UIColor_Hex_Swift.framework"
 fi

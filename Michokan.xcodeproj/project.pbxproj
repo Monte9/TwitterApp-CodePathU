@@ -14,6 +14,9 @@
 		FA2D519E1C67170000F9DE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA2D519D1C67170000F9DE89 /* Assets.xcassets */; };
 		FA2D51A11C67170000F9DE89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2D519F1C67170000F9DE89 /* LaunchScreen.storyboard */; };
 		FA2D51B21C67207D00F9DE89 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2D51B11C67207D00F9DE89 /* TwitterClient.swift */; };
+		FA2D51B51C6B0BF100F9DE89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2D51B41C6B0BF100F9DE89 /* User.swift */; };
+		FA2D51B71C6B0C0000F9DE89 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2D51B61C6B0C0000F9DE89 /* Tweet.swift */; };
+		FA2D51BA1C6B1F3C00F9DE89 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2D51B91C6B1F3C00F9DE89 /* TweetsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,10 @@
 		FA2D51A01C67170000F9DE89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA2D51A21C67170000F9DE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA2D51B11C67207D00F9DE89 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		FA2D51B41C6B0BF100F9DE89 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA2D51B61C6B0C0000F9DE89 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		FA2D51B91C6B1F3C00F9DE89 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		FA2D51BB1C6B296000F9DE89 /* Gotham Narrow Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Narrow Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +87,11 @@
 		FA2D51951C67170000F9DE89 /* Michokan */ = {
 			isa = PBXGroup;
 			children = (
+				FA2D51BB1C6B296000F9DE89 /* Gotham Narrow Bold.otf */,
 				FA2D51A81C67171000F9DE89 /* API's */,
+				FA2D51B31C6B0B8000F9DE89 /* Models */,
+				FA2D51B81C6B1F1A00F9DE89 /* View Controllers */,
 				FA2D51961C67170000F9DE89 /* AppDelegate.swift */,
-				FA2D51981C67170000F9DE89 /* ViewController.swift */,
 				FA2D519A1C67170000F9DE89 /* Main.storyboard */,
 				FA2D519D1C67170000F9DE89 /* Assets.xcassets */,
 				FA2D519F1C67170000F9DE89 /* LaunchScreen.storyboard */,
@@ -97,6 +106,24 @@
 				FA2D51B11C67207D00F9DE89 /* TwitterClient.swift */,
 			);
 			name = "API's";
+			sourceTree = "<group>";
+		};
+		FA2D51B31C6B0B8000F9DE89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA2D51B41C6B0BF100F9DE89 /* User.swift */,
+				FA2D51B61C6B0C0000F9DE89 /* Tweet.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA2D51B81C6B1F1A00F9DE89 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA2D51981C67170000F9DE89 /* ViewController.swift */,
+				FA2D51B91C6B1F3C00F9DE89 /* TweetsViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2D51B51C6B0BF100F9DE89 /* User.swift in Sources */,
+				FA2D51B71C6B0C0000F9DE89 /* Tweet.swift in Sources */,
+				FA2D51BA1C6B1F3C00F9DE89 /* TweetsViewController.swift in Sources */,
 				FA2D51991C67170000F9DE89 /* ViewController.swift in Sources */,
 				FA2D51B21C67207D00F9DE89 /* TwitterClient.swift in Sources */,
 				FA2D51971C67170000F9DE89 /* AppDelegate.swift in Sources */,

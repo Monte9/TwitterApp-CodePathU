@@ -9,5 +9,7 @@ pod "AFNetworking"
 
 pod "BDBOAuth1Manager"
 
+pod "UIColor_Hex_Swift"
+
 end
 

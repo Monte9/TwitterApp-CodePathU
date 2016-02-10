@@ -8,14 +8,22 @@
 
 import UIKit
 import BDBOAuth1Manager
+import UIColor_Hex_Swift
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var customView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        customView = UIView(frame: CGRectMake(0.0, 0.0, customView.frame.width, customView.frame.height))
+        var gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(rgba: "#00ffcc").CGColor, UIColor(rgba: "#55acee").CGColor]
+        view.layer.insertSublayer(gradient, atIndex: 0)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -23,23 +31,17 @@ class ViewController: UIViewController {
 
     @IBAction func loginButtonClicked(sender: AnyObject) {
         
-        //Getting the access token for signin
-        //remove access token if it exist previously
-        TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
-        
-        TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "michokan://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
-            print("Got request token")
-            var authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
-            UIApplication.sharedApplication().openURL(authURL!)
+        TwitterClient.sharedInstance.loginWithCompletion() {
+            (user: User?, error: NSError?) in
+            if(user != nil) {
+                //perform segue
+                self.performSegueWithIdentifier("loginSegue", sender: self)
+            } else {
+                //handle login error
+            }
             
-            })
-            { (error: NSError!) -> Void in
-                print("ERROR:  \(error)")
         }
-        
-        
-    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     }
-
+        
 }
 

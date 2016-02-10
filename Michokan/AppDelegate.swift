@@ -13,11 +13,26 @@ import BDBOAuth1Manager
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+//        
+//        if (User.currentUser != nil) {
+//            // GO to the logged in screen
+//            print("Current User detected")
+//            
+//            var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as? UIViewController
+//            window?.rootViewController = vc           
+//        }
+        
         return true
+    }
+    
+    func userDidLogout() {
+        var vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as? UIViewController
+        window?.rootViewController = vc
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -44,31 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        //Get access token
-        TwitterClient.sharedInstance.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
-                print("Access Token received")
-            
-            TwitterClient.sharedInstance.requestSerializer.saveAccessToken(
-            accessToken)
-            
-//            TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-//                print("user: \(response)")
-//                }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-//                print("error: \(error)")
-//                })
-
-            TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                print("user_timeline: \(response)")
-                }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-                print("error: \(error)")
-            })
-            
-            
-            })
-            { (error: NSError!) -> Void in
-                print("Access Token error")
-        }
-        
+        TwitterClient.sharedInstance.openUrl(url)
         
         return true
     }

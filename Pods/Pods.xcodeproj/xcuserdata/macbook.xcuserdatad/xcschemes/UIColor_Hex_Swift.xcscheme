@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CA9E1F4F1EDF3E124DEBEA2B'
-               BlueprintName = 'BDBOAuth1Manager'
+               BlueprintIdentifier = 'C53C50F4EB0CB37C749C775F'
+               BlueprintName = 'UIColor_Hex_Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'BDBOAuth1Manager.framework'>
+               BuildableName = 'UIColor_Hex_Swift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

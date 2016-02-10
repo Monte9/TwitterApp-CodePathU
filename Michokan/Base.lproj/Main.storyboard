@@ -4,11 +4,18 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Gotham Narrow Bold.otf">
+            <string>GothamNarrow-Bold</string>
+            <string>GothamNarrow-Bold</string>
+            <string>GothamNarrow-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Michokan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Michokan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,21 +24,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGc-od-ImH">
-                                <rect key="frame" x="84" y="256" width="153" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Login with Twitter"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterLogo_white" translatesAutoresizingMaskIntoConstraints="NO" id="TQw-K4-vUz">
+                                <rect key="frame" x="130" y="50" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="fYS-92-K3O"/>
+                                    <constraint firstAttribute="height" constant="60" id="pUw-rg-kHG"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGc-od-ImH">
+                                <rect key="frame" x="124" y="489" width="74" height="39"/>
+                                <fontDescription key="fontDescription" name="GothamNarrow-Bold" family="Gotham Narrow" pointSize="27"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="loginButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xek-Jn-qnn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBB-NH-lML">
+                                <rect key="frame" x="73" y="274" width="174" height="20"/>
+                                <fontDescription key="fontDescription" name="GothamNarrow-Bold" family="Gotham Narrow" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get real-time updates about what matters to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwM-y8-M40">
+                                <rect key="frame" x="35" y="324" width="250" height="40"/>
+                                <fontDescription key="fontDescription" name="GothamNarrow-Bold" family="Gotham Narrow" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.33333333333333331" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KBB-NH-lML" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="17Y-CG-cSA"/>
+                            <constraint firstItem="YwM-y8-M40" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NbD-DE-YzE"/>
+                            <constraint firstItem="YwM-y8-M40" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="35" id="OAl-az-c0t"/>
+                            <constraint firstItem="rGc-od-ImH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="PjU-ep-kG3"/>
+                            <constraint firstItem="TQw-K4-vUz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rwi-Vb-BKx"/>
+                            <constraint firstItem="KBB-NH-lML" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Vj3-pU-Y4m"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rGc-od-ImH" secondAttribute="bottom" constant="40" id="aJi-ch-04j"/>
+                            <constraint firstItem="TQw-K4-vUz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="cJC-fm-oNL"/>
+                            <constraint firstItem="YwM-y8-M40" firstAttribute="top" secondItem="KBB-NH-lML" secondAttribute="bottom" constant="30" id="nCn-dR-iUO"/>
+                            <constraint firstItem="rGc-od-ImH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YwM-y8-M40" secondAttribute="bottom" constant="30" id="xVh-o8-AUS"/>
+                            <constraint firstAttribute="trailing" secondItem="YwM-y8-M40" secondAttribute="trailing" constant="35" id="yuB-PN-1f6"/>
+                        </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="customView" destination="8bC-Xf-vdC" id="Y5u-eX-pKu"/>
+                        <segue destination="giO-0p-8HU" kind="modal" identifier="loginSegue" id="CvU-AY-DeF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128" y="307"/>
         </scene>
+        <!--Tweets View Controller-->
+        <scene sceneID="fnl-bE-Wm0">
+            <objects>
+                <viewController storyboardIdentifier="TweetsViewController" id="giO-0p-8HU" customClass="TweetsViewController" customModule="Michokan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MJH-IS-h4M"/>
+                        <viewControllerLayoutGuide type="bottom" id="qam-05-cdS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pOt-N9-4lD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhd-Q8-eI7">
+                                <rect key="frame" x="136" y="269" width="48" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="performLogout:" destination="giO-0p-8HU" eventType="touchUpInside" id="Gh5-3h-FUJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GAl-4q-0bk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="562" y="318"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="TwitterLogo_white" width="1687" height="1687"/>
+    </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
