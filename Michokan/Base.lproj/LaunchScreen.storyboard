@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" image="TwitterLogo_white" translatesAutoresizingMaskIntoConstraints="NO" id="oD0-M1-MnP">
-                                <rect key="frame" x="249" y="226" width="120" height="120"/>
+                                <rect key="frame" x="255" y="255" width="90" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Q6M-eO-hLo"/>
-                                    <constraint firstAttribute="width" constant="120" id="nOV-SV-fAS"/>
+                                    <constraint firstAttribute="height" constant="90" id="Q6M-eO-hLo"/>
+                                    <constraint firstAttribute="width" constant="90" id="nOV-SV-fAS"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="oD0-M1-MnP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-14" id="iW7-Mw-0eF"/>
-                            <constraint firstItem="oD0-M1-MnP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="9" id="tzF-eC-073"/>
+                            <constraint firstItem="oD0-M1-MnP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="iW7-Mw-0eF"/>
+                            <constraint firstItem="oD0-M1-MnP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tzF-eC-073"/>
                         </constraints>
                     </view>
                 </viewController>
