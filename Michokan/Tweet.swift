@@ -16,6 +16,7 @@ class Tweet: NSObject {
     
     init(dictionary: NSDictionary) {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
+    //    print("This is the user: \(user)")
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
         
@@ -35,4 +36,6 @@ class Tweet: NSObject {
         
         return tweets
     }
+    
+    
 }
