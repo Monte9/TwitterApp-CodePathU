@@ -14,79 +14,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let tabBarController = UITabBarController()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
-      //  window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-//        // Set up the search View Controller
-//        let tweetsNavigationController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController") as! UINavigationController
-//        let tweetsViewController = tweetsNavigationController.topViewController as! TweetsViewController
-//        tweetsNavigationController.tabBarItem.title = "Home"
-//        tweetsNavigationController.tabBarItem.image = UIImage(named: "home")
-//        
-//        
-//        //Customize Popular navigation bar UI
-//        tweetsNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#55acee").CGColor]
-//        
-//        /* Create an Image View to replace the Title View */
-//        var imageView: UIImageView = UIImageView(frame: CGRectMake(0.0, 0.0, 40.0, 40.0))
-//        
-//        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-//        
-//        /* Load an image. Be careful, this image will be cached */
-//        var image: UIImage = UIImage(named: "Icon-Small-50")!
-//        
-//        /* Set the image of the Image View */
-//        imageView.image = image
-//        
-//        /* Set the Title View */
-//        tweetsNavigationController.navigationBar.topItem?.titleView = imageView
-//        
-//        
-//        
-//        
-//        // Set up the search View Controller
-//        let meNavigationController = storyboard.instantiateViewControllerWithIdentifier("MeNavigationController") as! UINavigationController
-//        let meViewController = meNavigationController.topViewController
-//        meNavigationController.tabBarItem.title = "Me"
-//        meNavigationController.tabBarItem.image = UIImage(named: "me")
-//        
-//        
-////        //Customize Popular navigation bar UI
-////        nearbyNavigationController.navigationBar.barTintColor = UIColor(red: 218/255, green: 56/255, blue: 40/255, alpha: 1)
-////        nearbyNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-////        nearbyNavigationController.navigationBar.topItem?.title = "Nearby"
-//        
-//        // Set up the Tab Bar Controller to have two tabs
-//        let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = [tweetsNavigationController, meNavigationController]
-//       // UITabBar.appearance().tintColor = UIColor(red: 218/255, green: 56/255, blue: 40/255, alpha: 1)
-//        //    UITabBar.appearance().barTintColor = UIColor.blackColor()
-//        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
-//        // Make the Tab Bar Controller the root view controller
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
-//        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
-//        
-//        if (User.currentUser != nil) {
-//            // GO to the logged in screen
-//            print("Current User detected")
-//            
-//            var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as? UIViewController
-//            window?.rootViewController = vc           
-//        }
-//        
+        
+        
+        if (User.currentUser != nil) {
+            // GO to the logged in screen
+            print("Current User detected")
+            
+           // User.currentUser = nil
+            //userDidLogout()
+            setupTabBars()
+            
+        } else {
+            print("no user found")
+            var vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as? UIViewController
+            // Make the vc the root view controller
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+
+            //setupTabBars()
+        }
+        
         return true
     }
     
     func userDidLogout() {
+        print("trying to log user out and switch view controllers as well")
         var vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as? UIViewController
         window?.rootViewController = vc
+    }
+    
+    func setupTabBars() {
+        // Set up the search View Controller
+        let tweetsNavigationController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController") as! UINavigationController
+        let tweetsViewController = tweetsNavigationController.topViewController as! TweetsViewController
+        tweetsNavigationController.tabBarItem.title = "Home"
+        tweetsNavigationController.tabBarItem.image = UIImage(named: "home")
+        
+        
+        //Customize Popular navigation bar UI
+        tweetsNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#55acee").CGColor]
+        
+        /* Create an Image View to replace the Title View */
+        var imageView: UIImageView = UIImageView(frame: CGRectMake(0.0, 0.0, 40.0, 40.0))
+        
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        /* Load an image. Be careful, this image will be cached */
+        var image: UIImage = UIImage(named: "Icon-Small-50")!
+        
+        /* Set the image of the Image View */
+        imageView.image = image
+        
+        /* Set the Title View */
+        tweetsNavigationController.navigationBar.topItem?.titleView = imageView
+        
+        // Set up the search View Controller
+        let meViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
+        meViewController.tabBarItem.title = "Me"
+        meViewController.tabBarItem.image = UIImage(named: "me")
+        
+        // Set up the Tab Bar Controller to have two tabs
+        tabBarController.viewControllers = [tweetsNavigationController, meViewController]
+        UITabBar.appearance().tintColor = UIColor(rgba: "#55acee")
+        //    UITabBar.appearance().barTintColor = UIColor.blackColor()
+        
+        // Make the Tab Bar Controller the root view controller
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -118,4 +123,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

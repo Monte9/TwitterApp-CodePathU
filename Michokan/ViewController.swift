@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var customView: UIView!
     
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,7 +37,10 @@ class ViewController: UIViewController {
             (user: User?, error: NSError?) in
             if(user != nil) {
                 //perform segue
-                self.performSegueWithIdentifier("loginSegue", sender: self)
+               
+                self.appDelegate.setupTabBars()
+                
+              //  self.performSegueWithIdentifier("loginSegue", sender: self)
             } else {
                 //handle login error
             }

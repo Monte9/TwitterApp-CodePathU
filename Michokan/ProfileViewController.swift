@@ -1,32 +1,29 @@
 //
-//  TweetsViewController.swift
+//  ProfileViewController.swift
 //  Michokan
 //
-//  Created by Monte's Pro 13" on 2/9/16.
+//  Created by Monte's Pro 13" on 2/12/16.
 //  Copyright © 2016 MonteThakkar. All rights reserved.
 //
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
-    var tweets: [Tweet]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        TwitterClient.sharedInstance.homeTimelineWithCompletion(nil) { (tweets, error) -> () in
-            self.tweets = tweets
-            
-            for tweet in tweets! {
-                print("\(tweet.text)")
-            }
-        }
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func performLogout(sender: AnyObject) {
+        User.currentUser?.logout()
+        print("so this?")
     }
 
     /*
