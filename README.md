@@ -35,6 +35,9 @@ Here's a walkthrough of implemented user stories:
 
 ![walkthrough](Twitter-HomeView.gif)
 
+![walkthrough](Twitter-favFeature.gif)
+
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
