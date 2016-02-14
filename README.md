@@ -33,7 +33,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![walkthrough](Twitter-HomeView.gif)
+![walkthrough](Twitter-HomeView1.gif)
 
 ![walkthrough](Twitter-favFeature.gif)
 
