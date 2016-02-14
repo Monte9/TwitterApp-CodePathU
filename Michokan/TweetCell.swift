@@ -20,13 +20,13 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var replyImageView: UIImageView!
     
-    @IBOutlet weak var retweetImageView: UIImageView!
-    
-    @IBOutlet weak var likeImageView: UIImageView!
-    
     @IBOutlet weak var retweetCountLabel: UILabel!
     
     @IBOutlet weak var favCountLabel: UILabel!
+    
+    @IBOutlet weak var retweetButton: UIButton!
+    
+    @IBOutlet weak var favButton: UIButton!
     
     var tweet : Tweet! {
         didSet {
@@ -38,7 +38,7 @@ class TweetCell: UITableViewCell {
             print("This set the retweet count: \(tweet.retweetCount as! Int)")
             
             favCountLabel.text = "\(tweet.favCount as! Int)"
-          //  print("This is the set fav count: \(favCountLabel.text)")
+            print("This is the set fav count: \(tweet.favCount as! Int)")
             
             if (tweet.user?.profileImageUrl != nil) {
             //    profileImageView.setImageWithURL(tweet.user!.profileImageUrl)
@@ -47,8 +47,14 @@ class TweetCell: UITableViewCell {
             }
             
             replyImageView.image = UIImage(named: "reply-blue")
-            retweetImageView.image = UIImage(named: "retweet-blue")
-            likeImageView.image = UIImage(named: "like-blue")
+            
+            retweetButton.setImage(UIImage(named: "retweet"), forState: UIControlState.Normal)
+            
+            favButton.setImage(UIImage(named: "like"), forState: UIControlState.Normal)
+            
+            
+         //   retweetImageView.image = UIImage(named: "retweet-blue")
+          //  likeImageView.image = UIImage(named: "like-blue")
           //  timeLabel.text = "\(tweet.createdAt)"
         }
     }

@@ -39,22 +39,14 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func favoriteWithCompletion(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
-        
-     //   print("are you even here?")
-      //  print(params)
-        
+
         POST("1.1/favorites/create.json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-            
-          //  print("favorite tweet: \(response)")
-            
-            //var tweet = response as! Tweet
             
             var tweet = Tweet.tweetAsDictionary(response as! NSDictionary)
             
-         //   print(tweet.favCount)
-            
-          //  print(tweet)
-            
+            print("This is the retweetCount: \(tweet.retweetCount)")
+            print("This is the favCount: \(tweet.favCount)")
+
             completion(tweet: tweet, error: nil)
             
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
@@ -65,19 +57,13 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     func retweetWithCompletion(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
         
-        //   print("are you even here?")
-        print(params!["id"] as! Int)
-        
         POST("1.1/statuses/retweet/\(params!["id"] as! Int).json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-            
-            //  print("favorite tweet: \(response)")
-            
-            //var tweet = response as! Tweet
             
             var tweet = Tweet.tweetAsDictionary(response as! NSDictionary)
         
-            print(tweet.retweetCount)
-            
+            print("This is the retweetCount: \(tweet.retweetCount)")
+            print("This is the favCount: \(tweet.favCount)")
+
             //  print(tweet)
             
             completion(tweet: tweet, error: nil)

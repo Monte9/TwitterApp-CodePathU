@@ -16,6 +16,8 @@ class Tweet: NSObject {
     var id: NSNumber?
     var favCount: NSNumber?
     var retweetCount: NSNumber?
+    var retweetImage: UIImage?
+    var favImage: UIImage?
     
     init(dictionary: NSDictionary) {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
@@ -38,6 +40,12 @@ class Tweet: NSObject {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)
+        
+        retweetImage = nil
+        favImage = nil
+        
+//        retweetImage = UIImage(named: "retweet-clicked")
+//        favImage = UIImage(named: "like-clicked")
         
     }
     
