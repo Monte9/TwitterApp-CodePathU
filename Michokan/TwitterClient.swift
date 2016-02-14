@@ -62,6 +62,31 @@ class TwitterClient: BDBOAuth1SessionManager {
                 completion(tweet: nil, error: error)
         }
     }
+
+    func retweetWithCompletion(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        
+        //   print("are you even here?")
+        print(params!["id"] as! Int)
+        
+        POST("1.1/statuses/retweet/\(params!["id"] as! Int).json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            //  print("favorite tweet: \(response)")
+            
+            //var tweet = response as! Tweet
+            
+            var tweet = Tweet.tweetAsDictionary(response as! NSDictionary)
+        
+            print(tweet.retweetCount)
+            
+            //  print(tweet)
+            
+            completion(tweet: tweet, error: nil)
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("ERROR: \(error)")
+                completion(tweet: nil, error: error)
+        }
+    }
     
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion

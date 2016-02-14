@@ -35,9 +35,10 @@ class TweetCell: UITableViewCell {
             screennameLabel.text = "@\(tweet.user!.screenname)"
 
             retweetCountLabel.text = "\(tweet.retweetCount as! Int)"
+            print("This set the retweet count: \(tweet.retweetCount as! Int)")
             
             favCountLabel.text = "\(tweet.favCount as! Int)"
-            print("This is the set fav count: \(favCountLabel.text)")
+          //  print("This is the set fav count: \(favCountLabel.text)")
             
             if (tweet.user?.profileImageUrl != nil) {
             //    profileImageView.setImageWithURL(tweet.user!.profileImageUrl)
