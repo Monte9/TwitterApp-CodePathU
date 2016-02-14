@@ -33,14 +33,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tableView.reloadData()
             }
             
-//            for tweet in tweets! {
-//                //print(tweet)
-//                print("\(tweet.text)")
-////                self.textLabel.text = tweet.text
-////                self.nameLabel.text = tweet.user?.name
-////                self.screennameLabel.text = tweet.user?.screenname
-//            //    self.profileImageView.setImageWithURL(tweet.user?.profileImageUrl)
-//            }
+            //            for tweet in tweets! {
+            //                //print(tweet)
+            //                print("\(tweet.text)")
+            ////                self.textLabel.text = tweet.text
+            ////                self.nameLabel.text = tweet.user?.name
+            ////                self.screennameLabel.text = tweet.user?.screenname
+            //            //    self.profileImageView.setImageWithURL(tweet.user?.profileImageUrl)
+            //            }
         }
         
         
@@ -59,7 +59,48 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
-
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let tweet = tweets![indexPath.row]
+        
+        let tweetID = tweet.id
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
+        
+        
+        
+        print("Cell selection detected")
+        
+       // print("This is the old fav count: \(tweet.favCount as! Int)")
+        
+        TwitterClient.sharedInstance.favoriteWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
+            
+            if (tweet != nil) {
+                print("Tweet was printed successfull.. incre tweet count here")
+                
+                print(tweet!.favCount as! Int)
+             //
+              //  cell.tweet = tweet
+                
+                self.tweets![indexPath.row] = tweet!
+                
+             //   print(tweet!.favCount as! Int)
+             //   cell.favCountLabel.text = "\(tweet!.favCount as! Int)"
+               // tableView.reloadData()
+                
+                var indexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+                
+              //trying to reload data now
+              //  self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Right)
+                
+            }
+            else {
+                print("Did it print the print fav tweet? cause this is the error message and you should not be seeing this.")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -38,6 +38,31 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     }
     
+    func favoriteWithCompletion(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        
+     //   print("are you even here?")
+      //  print(params)
+        
+        POST("1.1/favorites/create.json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+          //  print("favorite tweet: \(response)")
+            
+            //var tweet = response as! Tweet
+            
+            var tweet = Tweet.tweetAsDictionary(response as! NSDictionary)
+            
+         //   print(tweet.favCount)
+            
+          //  print(tweet)
+            
+            completion(tweet: tweet, error: nil)
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("ERROR: \(error)")
+                completion(tweet: nil, error: error)
+        }
+    }
+    
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
         

@@ -24,13 +24,20 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var likeImageView: UIImageView!
     
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    
+    @IBOutlet weak var favCountLabel: UILabel!
+    
     var tweet : Tweet! {
         didSet {
             tweetTextLabel.text = tweet.text
             nameLabel.text = tweet.user?.name
             screennameLabel.text = "@\(tweet.user!.screenname)"
 
+            retweetCountLabel.text = "\(tweet.retweetCount as! Int)"
             
+            favCountLabel.text = "\(tweet.favCount as! Int)"
+            print("This is the set fav count: \(favCountLabel.text)")
             
             if (tweet.user?.profileImageUrl != nil) {
             //    profileImageView.setImageWithURL(tweet.user!.profileImageUrl)
