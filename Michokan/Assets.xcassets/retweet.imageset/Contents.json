@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "retweet-action-inactive.png",
+      "filename" : "retweet-action_default.png",
       "scale" : "1x"
     },
     {

@@ -40,28 +40,56 @@ class TweetCell: UITableViewCell {
             favCountLabel.text = "\(tweet.favCount as! Int)"
             print("This is the set fav count: \(tweet.favCount as! Int)")
             
-            if (tweet.user?.profileImageUrl != nil) {
-            //    profileImageView.setImageWithURL(tweet.user!.profileImageUrl)
-            } else {
-                print("No profile picture found")
-            }
+            profileImageView.setImageWithURL(tweet.user!.profileImageUrl!)
             
-            replyImageView.image = UIImage(named: "reply-blue")
+            replyImageView.image = UIImage(named: "reply.png")
             
-            retweetButton.setImage(UIImage(named: "retweet"), forState: UIControlState.Normal)
+            retweetButton.setImage(UIImage(named: "retweet.png"), forState: UIControlState.Selected)
             
-            favButton.setImage(UIImage(named: "like"), forState: UIControlState.Normal)
+            favButton.setImage(UIImage(named: "like.png"), forState: UIControlState.Selected)
             
-            
-         //   retweetImageView.image = UIImage(named: "retweet-blue")
-          //  likeImageView.image = UIImage(named: "like-blue")
-          //  timeLabel.text = "\(tweet.createdAt)"
+         
+            timeLabel.text = calculateTimeStamp(tweet.createdAt!.timeIntervalSinceNow)
         }
+    }
+    
+    //All credit for this method goes to David Wayman, slack @dwayman
+    func calculateTimeStamp(timeTweetPostedAgo: NSTimeInterval) -> String {
+        // Turn timeTweetPostedAgo into seconds, minutes, hours, days, or years
+        var rawTime = Int(timeTweetPostedAgo)
+        var timeAgo: Int = 0
+        var timeChar = ""
+        
+        rawTime = rawTime * (-1)
+        
+        // Figure out time ago
+        if (rawTime <= 60) { // SECONDS
+            timeAgo = rawTime
+            timeChar = "s"
+        } else if ((rawTime/60) <= 60) { // MINUTES
+            timeAgo = rawTime/60
+            timeChar = "m"
+        } else if (rawTime/60/60 <= 24) { // HOURS
+            timeAgo = rawTime/60/60
+            timeChar = "h"
+        } else if (rawTime/60/60/24 <= 365) { // DAYS
+            timeAgo = rawTime/60/60/24
+            timeChar = "d"
+        } else if (rawTime/(3153600) <= 1) { // YEARS
+            timeAgo = rawTime/60/60/24/365
+            timeChar = "y"
+        }
+        
+        return "\(timeAgo)\(timeChar)"
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        profileImageView.layer.cornerRadius = 5
+        profileImageView.clipsToBounds = true
+
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
