@@ -56,84 +56,84 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     
-    @IBAction func retweetButtonClicked(sender: AnyObject) {
-        
-        print("Retweet button clicked")
-        
-        var subviewPostion: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
-        
-        var indexPath: NSIndexPath = self.tableView.indexPathForRowAtPoint(subviewPostion)!
-        
-        let cell =  self.tableView.cellForRowAtIndexPath(indexPath)! as! TweetCell
-        
-        print("This is the index path of the cell: \(indexPath.row)")
-        
-        let tweet = tweets![indexPath.row]
-        
-        let tweetID = tweet.id
-        
-        TwitterClient.sharedInstance.retweetWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
-            
-            if (tweet != nil) {
-                print("Tweet was printed successfull.. incre tweet retweet count here")
-                
-                self.tweets![indexPath.row].retweetCount = self.tweets![indexPath.row].retweetCount as! Int + 1
-                
-                //  cell.retweetButton.setImage(UIImage(named: "retweet-clicked.png"), forState: UIControlState.Selected)
-                
-                
-                var indexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
-                
-            }
-            else {
-                print("Did it print the print fav tweet? cause this is the error message and you should not be seeing this.")
-            }
-        }
-        
-
-    }
-    
-    @IBAction func likeButtonClicked(sender: AnyObject) {
-        
-        print("Like button clicked")
-        
-        var button : UIButton = sender as! UIButton
-        
-       // button.setBackgroundImage(UIImage(named: "like-clicked"), forState: UIControlState.Highlighted)
-        
-        var subviewPostion: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
-        
-        var indexPath: NSIndexPath = self.tableView.indexPathForRowAtPoint(subviewPostion)!
-        
-        let cell =  self.tableView.cellForRowAtIndexPath(indexPath)! as! TweetCell
-        
-        print("This is the index path of the cell: \(indexPath.row)")
-        
-        let tweet = tweets![indexPath.row]
-        
-        let tweetID = tweet.id
-        
-        
-        TwitterClient.sharedInstance.favoriteWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
-            
-            if (tweet != nil) {
-                print("Tweet was printed successfull.. incre tweet count here")
-                
-              //  cell.favButton.setImage(UIImage(named: "like-clicked.png"), forState: UIControlState.Selected)
-                
-               // self.tweets![indexPath.row] = tweet!
-                self.tweets![indexPath.row].favCount = self.tweets![indexPath.row].favCount as! Int + 1
-                var indexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
-                
-            }
-            else {
-                print("Did it print the print fav tweet? cause this is the error message and you should not be seeing this.")
-            }
-        }
-        
-    }
+//    @IBAction func retweetButtonClicked(sender: AnyObject) {
+//        
+//        print("Retweet button clicked")
+//        
+//        var subviewPostion: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+//        
+//        var indexPath: NSIndexPath = self.tableView.indexPathForRowAtPoint(subviewPostion)!
+//        
+//        let cell =  self.tableView.cellForRowAtIndexPath(indexPath)! as! TweetCell
+//        
+//        print("This is the index path of the cell: \(indexPath.row)")
+//        
+//        let tweet = tweets![indexPath.row]
+//        
+//        let tweetID = tweet.id
+//        
+//        TwitterClient.sharedInstance.retweetWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
+//            
+//            if (tweet != nil) {
+//                print("Tweet was printed successfull.. incre tweet retweet count here")
+//                
+//                self.tweets![indexPath.row].retweetCount = self.tweets![indexPath.row].retweetCount as! Int + 1
+//                
+//                //  cell.retweetButton.setImage(UIImage(named: "retweet-clicked.png"), forState: UIControlState.Selected)
+//                
+//                
+//                var indexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+//                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+//                
+//            }
+//            else {
+//                print("Did it print the print fav tweet? cause this is the error message and you should not be seeing this.")
+//            }
+//        }
+//        
+//
+//    }
+//    
+//    @IBAction func likeButtonClicked(sender: AnyObject) {
+//        
+//        print("Like button clicked")
+//        
+//        var button : UIButton = sender as! UIButton
+//        
+//       // button.setBackgroundImage(UIImage(named: "like-clicked"), forState: UIControlState.Highlighted)
+//        
+//        var subviewPostion: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+//        
+//        var indexPath: NSIndexPath = self.tableView.indexPathForRowAtPoint(subviewPostion)!
+//        
+//        let cell =  self.tableView.cellForRowAtIndexPath(indexPath)! as! TweetCell
+//        
+//        print("This is the index path of the cell: \(indexPath.row)")
+//        
+//        let tweet = tweets![indexPath.row]
+//        
+//        let tweetID = tweet.id
+//        
+//        
+//        TwitterClient.sharedInstance.favoriteWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
+//            
+//            if (tweet != nil) {
+//                print("Tweet was printed successfull.. incre tweet count here")
+//                
+//              //  cell.favButton.setImage(UIImage(named: "like-clicked.png"), forState: UIControlState.Selected)
+//                
+//               // self.tweets![indexPath.row] = tweet!
+//                self.tweets![indexPath.row].favCount = self.tweets![indexPath.row].favCount as! Int + 1
+//                var indexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+//                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+//                
+//            }
+//            else {
+//                print("Did it print the print fav tweet? cause this is the error message and you should not be seeing this.")
+//            }
+//        }
+//        
+//    }
     
     
     //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

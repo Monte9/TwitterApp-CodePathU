@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 
 class TweetCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screennameLabel: UILabel!
@@ -28,28 +28,23 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var favButton: UIButton!
     
+    var tweetID: NSNumber?
+    
     var tweet : Tweet! {
         didSet {
             tweetTextLabel.text = tweet.text
             nameLabel.text = tweet.user?.name
             screennameLabel.text = "@\(tweet.user!.screenname)"
-
+            
             retweetCountLabel.text = "\(tweet.retweetCount as! Int)"
-            print("This set the retweet count: \(tweet.retweetCount as! Int)")
             
             favCountLabel.text = "\(tweet.favCount as! Int)"
-            print("This is the set fav count: \(tweet.favCount as! Int)")
             
             profileImageView.setImageWithURL(tweet.user!.profileImageUrl!)
             
-            replyImageView.image = UIImage(named: "reply.png")
-            
-            retweetButton.setImage(UIImage(named: "retweet.png"), forState: UIControlState.Selected)
-            
-            favButton.setImage(UIImage(named: "like.png"), forState: UIControlState.Selected)
-            
-         
             timeLabel.text = calculateTimeStamp(tweet.createdAt!.timeIntervalSinceNow)
+            
+            tweetID = tweet.id
         }
     }
     
@@ -83,19 +78,68 @@ class TweetCell: UITableViewCell {
         return "\(timeAgo)\(timeChar)"
     }
     
+    @IBAction func retweetButtonClicked(sender: AnyObject) {
+        
+        print("Retweet button clicked")
+        
+        TwitterClient.sharedInstance.retweetWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
+            
+            if (tweet != nil) {
+                
+                self.retweetButton.setImage(UIImage(named: "retweet-action-on-green.png"), forState: UIControlState.Normal)
+                
+                if self.retweetCountLabel.text! > "0" {
+                    self.retweetCountLabel.text = String(self.tweet!.retweetCount! + 1)
+                } else {
+                    self.retweetCountLabel.hidden = false
+                    self.retweetCountLabel.text =
+                        String(self.tweet!.retweetCount! + 1)
+                }
+                
+            }
+            else {
+                print("ERROR retweeting: \(error)")
+            }
+        }
+    }
+    
+    @IBAction func likeButtonClicked(sender: AnyObject) {
+
+        print("Like button clicked")
+        
+        TwitterClient.sharedInstance.favoriteWithCompletion(["id": tweetID!]) { (tweet, error) -> () in
+            
+            if (tweet != nil) {
+                
+                self.favButton.setImage(UIImage(named: "like-action-on-red.png"), forState: UIControlState.Normal)
+                
+                if self.favCountLabel.text! > "0" {
+                    self.favCountLabel.text = String(self.tweet.favCount! + 1)
+                } else {
+                    self.favCountLabel.hidden = false
+                    self.favCountLabel.text = String(self.tweet.favCount! + 1)
+                }
+                
+            }
+            else {
+                print("Did it print the print fav tweet? cause this is the error message and you should not be seeing this.")
+            }
+        }
+        
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
-
-        
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

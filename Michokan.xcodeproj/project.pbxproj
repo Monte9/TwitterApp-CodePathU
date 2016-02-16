@@ -99,13 +99,13 @@
 		FA2D51951C67170000F9DE89 /* Michokan */ = {
 			isa = PBXGroup;
 			children = (
-				FA1D09D11C6EFEA700EAD66F /* Views */,
 				FA2D51BB1C6B296000F9DE89 /* Gotham Narrow Bold.otf */,
+				FA2D51961C67170000F9DE89 /* AppDelegate.swift */,
+				FA2D519A1C67170000F9DE89 /* Main.storyboard */,
+				FA1D09D11C6EFEA700EAD66F /* Views */,
 				FA2D51A81C67171000F9DE89 /* API's */,
 				FA2D51B31C6B0B8000F9DE89 /* Models */,
 				FA2D51B81C6B1F1A00F9DE89 /* View Controllers */,
-				FA2D51961C67170000F9DE89 /* AppDelegate.swift */,
-				FA2D519A1C67170000F9DE89 /* Main.storyboard */,
 				FA2D519D1C67170000F9DE89 /* Assets.xcassets */,
 				FA2D519F1C67170000F9DE89 /* LaunchScreen.storyboard */,
 				FA2D51A21C67170000F9DE89 /* Info.plist */,

@@ -14,39 +14,27 @@ class Tweet: NSObject {
     var createdAtString: String?
     var createdAt: NSDate?
     var id: NSNumber?
-    var favCount: NSNumber?
-    var retweetCount: NSNumber?
+    var favCount: Int!
+    var retweetCount: Int!
     var retweetImage: UIImage?
     var favImage: UIImage?
-    
+
     init(dictionary: NSDictionary) {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
-    //    print("This is the user: \(user)")
+        
         text = dictionary["text"] as? String
+
         createdAtString = dictionary["created_at"] as? String
         
         id = dictionary["id"] as? Int
-       // print("This is the tweet id: \(id)")
-        
-       // print(dictionary["favorite_count"] as? Int)
 
-        
-        favCount = dictionary["favorite_count"] as! Int
-
-      //  print(favCount)
+        favCount = dictionary["favorite_count"] as? Int
         
         retweetCount = dictionary["retweet_count"] as? Int
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)
-        
-        retweetImage = nil
-        favImage = nil
-        
-//        retweetImage = UIImage(named: "retweet-clicked")
-//        favImage = UIImage(named: "like-clicked")
-        
     }
     
     
@@ -56,7 +44,6 @@ class Tweet: NSObject {
         
         for dictionary in array {
             tweets.append(Tweet(dictionary: dictionary))
-           // print(Tweet(dictionary: dictionary))
         }
         
         return tweets
@@ -64,8 +51,6 @@ class Tweet: NSObject {
     
     //convinience method that takes array of dictionaries and returns array of tweets
     class func tweetAsDictionary(dict: NSDictionary) -> Tweet {
-        
-       // print(dict)
         
         var tweet = Tweet(dictionary: dict)
         
