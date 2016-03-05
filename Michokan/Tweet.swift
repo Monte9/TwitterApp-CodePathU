@@ -18,7 +18,9 @@ class Tweet: NSObject {
     var retweetCount: Int!
     var retweetImage: UIImage?
     var favImage: UIImage?
-
+    var isRetweeted: Bool? = false
+    var isLiked: Bool? = false
+    
     init(dictionary: NSDictionary) {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
         
