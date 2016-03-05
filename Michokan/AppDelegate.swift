@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set up the search View Controller
         let meViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
         meViewController.tabBarItem.title = "Me"
-        meViewController.tabBarItem.image = UIImage(named: "me")
+        meViewController.tabBarItem.image = UIImage(named: "profile")
         
         // Set up the Tab Bar Controller to have two tabs
         tabBarController.viewControllers = [tweetsNavigationController, meViewController]
