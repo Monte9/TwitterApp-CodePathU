@@ -10,10 +10,34 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
+    @IBOutlet weak var numTweetsLabel: UILabel!
+    @IBOutlet weak var numFollowersLabel: UILabel!
+    @IBOutlet weak var numFollowingLabel: UILabel!
+    
+    var tweet: Tweet!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(tweet)
 
         // Do any additional setup after loading the view.
+        nameLabel.text = tweet.user!.name!
+        screenNameLabel.text = "@\(tweet.user!.screenname!)"
+        numTweetsLabel.text = String(tweet.user!.numTweets!)
+        numFollowersLabel.text = String(tweet.user!.numFollowers!)
+        numFollowingLabel.text = String(tweet.user!.numFollowing!)
+        
+        thumbImageView.setImageWithURL(tweet.user!.profileImageUrl!)
+        backgroundImageView.setImageWithURL(tweet.user!.profileBackgroundImageUrl!)
+        
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,11 +45,6 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func performLogout(sender: AnyObject) {
-        User.currentUser?.logout()
-        print("so this?")
-    }
-
     /*
     // MARK: - Navigation
 

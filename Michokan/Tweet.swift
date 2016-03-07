@@ -29,7 +29,8 @@ class Tweet: NSObject {
         createdAtString = dictionary["created_at"] as? String
         
         id = dictionary["id"] as? Int
-
+        
+     
         favCount = dictionary["favorite_count"] as? Int
         
         retweetCount = dictionary["retweet_count"] as? Int

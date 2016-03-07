@@ -12,6 +12,7 @@ import AFNetworking
 protocol TweetCellDelegate: class {
     func retweetButtonClicked (tweetCell: TweetCell!)
     func likeButtonClicked (tweetCell: TweetCell!)
+    func thumbImageClicked(tweetCell: TweetCell!)
 }
 
 class TweetCell: UITableViewCell {
@@ -90,6 +91,14 @@ class TweetCell: UITableViewCell {
         print("Like button clicked")
         buttonDelegate?.likeButtonClicked(self)
     }
+    
+    @IBAction func profileImageClicked(sender: AnyObject) {
+        print("Profile Image clicked")
+        buttonDelegate?.thumbImageClicked(self)
+    }
+    
+    
+    
             
     override func awakeFromNib() {
         super.awakeFromNib()

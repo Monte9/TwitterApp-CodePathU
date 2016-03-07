@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
         
-        
         if (User.currentUser != nil) {
             // GO to the logged in screen
             print("Current User detected")
@@ -79,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tweetsNavigationController.navigationBar.topItem?.titleView = imageView
         
         // Set up the search View Controller
-        let meViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
+        let meViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
         meViewController.tabBarItem.title = "Me"
         meViewController.tabBarItem.image = UIImage(named: "profile")
         
